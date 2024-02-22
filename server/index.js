@@ -9,6 +9,7 @@ import dotenv from 'dotenv'
 import multer from 'multer'
 
 import { fileURLToPath } from 'url'
+import authRoutes from './routes/auth.js'
 import { register } from 'module'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -37,6 +38,8 @@ const upload = multer({ storage })
 // Routes with files
 
 app.post('/auth/register', upload.single('picture'), register)
+
+app.use('/auth', authRoutes)
 
 const PORT = process.env.PORT || 6001
 mongoose
