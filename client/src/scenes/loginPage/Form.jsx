@@ -262,7 +262,7 @@ const Form = () => {
               }}
             >
               {isLogin
-                ? "Don't have an account? Sign Up here."
+                ? "Don't have an account? Sign Up!."
                 : 'Already have an account? Login here.'}
             </Typography>
           </Box>
