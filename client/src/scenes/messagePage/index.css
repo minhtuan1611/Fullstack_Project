@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.custom-message-box {
+  display: flex;
+  margin-top: 20px;
+  background-color: rgba(186, 19, 19, 0);
+  backdrop-filter: blur(8px);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #555;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #121212;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #242424;
+}
+
+@media (min-width: 640px) {
+  .custom-message-box {
+    height: 450px;
+  }
+}
+
+@media (min-width: 768px) {
+  .custom-message-box {
+    height: 550px;
+  }
+}
