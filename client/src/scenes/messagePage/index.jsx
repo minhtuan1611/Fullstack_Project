@@ -2,8 +2,6 @@ import MessageContainer from '../../components/messages/MessageContainer'
 import Sidebar from '../../components/sidebar/Sidebar'
 import Navbar from '../navbar'
 
-import './index.css'
-
 const MessagePage = () => {
   return (
     <div>
