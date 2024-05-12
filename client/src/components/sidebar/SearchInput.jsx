@@ -17,7 +17,7 @@ const SearchInput = () => {
     }
 
     const conversation = conversations.find((c) =>
-      c.fullName.toLowerCase().includes(search.toLowerCase())
+      c.firstName.toLowerCase().includes(search.toLowerCase())
     )
 
     if (conversation) {
@@ -35,7 +35,7 @@ const SearchInput = () => {
         onChange={(e) => setSearch(e.target.value)}
       />
       <button type="submit" className="search-btn">
-        <IoSearchSharp class="search-icon" />
+        <IoSearchSharp className="search-icon" />
       </button>
     </form>
   )
