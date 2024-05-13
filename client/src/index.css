@@ -32,16 +32,13 @@ body,
   --chat-message-white: rgb(44, 46, 80);
 }
 
-body {
-  background: var(--background-color) no-repeat center/cover;
-}
-
 .chat-app {
   padding: 1rem;
-  height: 90vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #2779bd;
 }
 
 .container {

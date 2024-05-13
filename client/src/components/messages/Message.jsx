@@ -1,19 +1,18 @@
 import PropTypes from 'prop-types'
 // import { useState } from 'react'
-import { useAuthContext } from '../../context/AuthContext'
+// import { useAuthContext } from '../../context/AuthContext'
 import { extractTime } from '../../utils/extractTime'
 import useConversation from '../../zustand/useConversation'
+import { useSelector } from 'react-redux'
 
 const Message = ({ message }) => {
-  const { authUser } = useAuthContext()
+  // const { authUser } = useAuthContext()
+  const { _id, profilePic } = useSelector((state) => state.user)
   const { selectedConversation } = useConversation()
-  const fromMe = message.senderId === authUser._id
+  const fromMe = message.senderId === _id
   const formattedTime = extractTime(message.createdAt)
-  const profilePic = fromMe
-    ? authUser.profilePic
-    : selectedConversation?.profilePic
+  const profilePicc = fromMe ? profilePic : selectedConversation?.profilePic
   const bubbleBgColor = fromMe ? 'blue' : 'white'
-
   const shakeClass = message.shouldShake ? 'shake' : ''
 
   return fromMe ? (
@@ -25,7 +24,7 @@ const Message = ({ message }) => {
         <div className="chat-time">{formattedTime}</div>
       </div>
       <div className="chat-avatar">
-        <img alt="user picture" src={profilePic} />
+        <img alt="user picture" src={profilePicc} />
       </div>
     </div>
   ) : (

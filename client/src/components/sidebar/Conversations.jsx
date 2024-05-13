@@ -1,9 +1,11 @@
-import useGetConversations from '../../hooks/useGetConversations'
 import { getRandomEmoji } from '../../utils/emojis'
 import Conversation from './Conversation'
+import { useSelector } from 'react-redux'
 
 const Conversations = () => {
-  const { loading, conversations } = useGetConversations()
+  // const [loading, setLoading] = useState(false)
+  const conversations = useSelector((state) => state.user.friends)
+
   return (
     <div className="conversations">
       {conversations.map((conversation, idx) => (
@@ -15,7 +17,7 @@ const Conversations = () => {
         />
       ))}
 
-      {loading ? <span className="loadingg"></span> : null}
+      {/* {loading ? <span className="loadingg"></span> : null} */}
     </div>
   )
 }

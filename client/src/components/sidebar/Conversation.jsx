@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types'
-import { useSocketContext } from '../../context/SocketContext'
+// import { useSocketContext } from '../../context/SocketContext'
 import useConversation from '../../zustand/useConversation'
 
 const Conversation = ({ conversation, lastIdx, emoji }) => {
   const { selectedConversation, setSelectedConversation } = useConversation()
 
   const isSelected = selectedConversation?._id === conversation._id
-  const { onlineUsers } = useSocketContext()
-  const isOnline = onlineUsers.includes(conversation._id)
+  // const { onlineUsers } = useSocketContext()
+  // const isOnline = onlineUsers.includes(conversation._id)
 
   return (
     <>
@@ -15,11 +15,11 @@ const Conversation = ({ conversation, lastIdx, emoji }) => {
         className={`conversation ${isSelected ? 'selected' : ''}`}
         onClick={() => setSelectedConversation(conversation)}
       >
-        <div className={`avatar ${isOnline ? 'online' : ''}`}>
-          <div className="avatar-img">
-            <img src={conversation.profilePic} alt="user avatar" />
-          </div>
+        {/* <div className={`avatar ${isOnline ? 'online' : ''}`}> */}
+        <div className="avatar-img">
+          <img src={conversation.picturePath} alt="user avatar" />
         </div>
+        {/* </div> */}
 
         <div className="conversation-details">
           <div className="details-top">
@@ -36,11 +36,11 @@ const Conversation = ({ conversation, lastIdx, emoji }) => {
 
 Conversation.propTypes = {
   conversation: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
-    profilePic: PropTypes.string.isRequired,
-    firstName: PropTypes.string.isRequired,
-  }).isRequired,
-  lastIdx: PropTypes.number,
+    _id: PropTypes.string,
+    picturePath: PropTypes.string,
+    firstName: PropTypes.string,
+  }),
+  lastIdx: PropTypes.bool,
   emoji: PropTypes.string,
 }
 
