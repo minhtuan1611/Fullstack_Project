@@ -22,7 +22,6 @@ const useGetMessages = () => {
           }
         )
         const data = await res.json()
-        console.log(data)
         if (data.error) throw new Error(data.error)
         setMessages(data)
       } catch (error) {
@@ -34,7 +33,6 @@ const useGetMessages = () => {
 
     if (selectedConversation?._id) {
       getMessages()
-      console.log(selectedConversation._id)
     }
   }, [selectedConversation._id, setMessages, token])
 

@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
 // import { useSocketContext } from '../../context/SocketContext'
 import useConversation from '../../zustand/useConversation'
+import UserImage from '../UserImage'
 
-const Conversation = ({ conversation, lastIdx, emoji }) => {
+const Conversation = ({ conversation, lastIdx }) => {
   const { selectedConversation, setSelectedConversation } = useConversation()
 
   const isSelected = selectedConversation?._id === conversation._id
@@ -16,15 +17,18 @@ const Conversation = ({ conversation, lastIdx, emoji }) => {
         onClick={() => setSelectedConversation(conversation)}
       >
         {/* <div className={`avatar ${isOnline ? 'online' : ''}`}> */}
-        <div className="avatar-img">
-          <img src={conversation.picturePath} alt="user avatar" />
-        </div>
+        {/* <div className="avatar-img">
+          <img
+            src={`http://localhost:3001/assets/${conversation.picturePath}`}
+            alt="user avatar"
+          />
+        </div> */}
+        <UserImage image={conversation.picturePath} size="55px" />
         {/* </div> */}
 
         <div className="conversation-details">
           <div className="details-top">
             <p className="font">{conversation.firstName}</p>
-            <span className="emoji">{emoji}</span>
           </div>
         </div>
       </div>
@@ -41,7 +45,6 @@ Conversation.propTypes = {
     firstName: PropTypes.string,
   }),
   lastIdx: PropTypes.bool,
-  emoji: PropTypes.string,
 }
 
 export default Conversation
