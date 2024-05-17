@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import useConversation from '../zustand/useConversation'
 import toast from 'react-hot-toast'
+import { useSelector } from 'react-redux'
 
 const useSendMessage = () => {
   const [loading, setLoading] = useState(false)
   const { messages, setMessages, selectedConversation } = useConversation()
+  const token = useSelector((state) => state.token)
 
   const sendMessage = async (message) => {
     setLoading(true)
@@ -15,7 +17,9 @@ const useSendMessage = () => {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
           },
+          // eslint-disable-next-line no-undef
           body: JSON.stringify({ message }),
         }
       )
