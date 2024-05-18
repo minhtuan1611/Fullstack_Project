@@ -99,8 +99,8 @@ body,
 .conversation {
   display: flex;
   gap: 0.5rem;
-  align-items: center;
-  padding: 0.5rem 1rem;
+  align-items: center; /* Vertically center the child elements */
+  padding: 0.5rem 0.5rem;
   cursor: pointer;
   border-radius: 0.25rem;
 }
@@ -109,6 +109,21 @@ body,
   display: flex;
   flex-direction: column;
   flex: 1;
+  height: 60px;
+  width: 60px;
+  justify-content: center;
+}
+
+.details-top {
+  margin-bottom: 0rem;
+}
+
+.message-content {
+  width: 100%; /* or any specific width you want */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: -1rem;
 }
 
 .conversation:hover {

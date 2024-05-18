@@ -1,4 +1,3 @@
-import { getRandomEmoji } from '../../utils/emojis'
 import Conversation from './Conversation'
 import { useSelector } from 'react-redux'
 
@@ -12,7 +11,6 @@ const Conversations = () => {
         <Conversation
           key={conversation._id}
           conversation={conversation}
-          emoji={getRandomEmoji()}
           lastIdx={idx === conversations.length - 1}
         />
       ))}
