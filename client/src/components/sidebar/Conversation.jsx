@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types'
-import useConversation from '../../zustand/useConversation'
 import UserImage from '../UserImage'
-import useGetLastMessage from '../../hooks/useGetLastMessage'
-import { truncateMessage, getTimeDifference } from 'utils/message'
-
-const Conversation = ({ conversation, lastIdx }) => {
-  const { selectedConversation, setSelectedConversation } = useConversation()
-  const isSelected = selectedConversation?._id === conversation._id
-  const { lastMessage } = useGetLastMessage(conversation._id)
-
+import { getTimeDifference, truncateMessage } from '../../utils/message'
+const Conversation = ({
+  conversation,
+  lastMessage,
+  isSelected,
+  setSelectedConversation,
+  isLast,
+}) => {
   return (
     <>
       <div
@@ -27,7 +26,7 @@ const Conversation = ({ conversation, lastIdx }) => {
         </div>
       </div>
 
-      {!lastIdx && <div className="divider" />}
+      {!isLast && <div className="divider" />}
     </>
   )
 }
@@ -38,7 +37,10 @@ Conversation.propTypes = {
     picturePath: PropTypes.string.isRequired,
     firstName: PropTypes.string.isRequired,
   }).isRequired,
-  lastIdx: PropTypes.bool.isRequired,
+  lastMessage: PropTypes.object,
+  isSelected: PropTypes.bool.isRequired,
+  setSelectedConversation: PropTypes.func.isRequired,
+  isLast: PropTypes.bool.isRequired,
 }
 
 export default Conversation
