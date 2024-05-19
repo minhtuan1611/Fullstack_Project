@@ -4,7 +4,7 @@ import MessageSkeleton from '../skeletons/MessageSkeleton'
 import Message from './Message'
 
 // eslint-disable-next-line react/prop-types
-const Messages = ({ onLastMessageUpdate }) => {
+const Messages = () => {
   const { messages, loading } = useGetMessages()
   const lastMessageRef = useRef()
 
@@ -13,13 +13,6 @@ const Messages = ({ onLastMessageUpdate }) => {
       lastMessageRef.current?.scrollIntoView({ behavior: 'smooth' })
     }, 100)
   }, [messages])
-
-  useEffect(() => {
-    if (messages.length > 0) {
-      const lastMessage = messages[messages.length - 1]
-      onLastMessageUpdate(lastMessage.message)
-    }
-  }, [messages, onLastMessageUpdate])
 
   return (
     <div className="messages">
