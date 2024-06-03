@@ -4,7 +4,8 @@ import MessageSkeleton from '../skeletons/MessageSkeleton'
 import Message from './Message'
 
 // eslint-disable-next-line react/prop-types
-const Messages = (blueColor, whiteColor) => {
+const Messages = ({ blueColor, whiteColor }) => {
+  // Destructure the props
   const { messages, loading } = useGetMessages()
   const lastMessageRef = useRef()
 
@@ -25,8 +26,8 @@ const Messages = (blueColor, whiteColor) => {
           >
             <Message
               message={message}
-              blueColor={blueColor}
-              whiteColor={whiteColor}
+              blueColor={blueColor} // Pass blueColor prop
+              whiteColor={whiteColor} // Pass whiteColor prop
             />
           </div>
         ))}

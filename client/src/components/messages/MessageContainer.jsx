@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux'
 
 // eslint-disable-next-line react/prop-types
 const MessageContainer = ({ color }) => {
-  // Destructure the color prop
   const { selectedConversation, setSelectedConversation } = useConversation()
 
   useEffect(() => {
@@ -23,13 +22,14 @@ const MessageContainer = ({ color }) => {
           <div
             className="message-header"
             style={{
-              backgroundColor: color, // Use color directly
+              backgroundColor: color,
             }}
           >
             <span className="label-text">To: </span>
             <span className="text-color">{selectedConversation.firstName}</span>
           </div>
-          <Messages blueColor="#00a0bc" whiteColor="#00a0bc" />
+          <Messages blueColor="#00a0bc" whiteColor="#ffffff" />{' '}
+          {/* Pass colors as props */}
           <MessageInput />
         </>
       )}
