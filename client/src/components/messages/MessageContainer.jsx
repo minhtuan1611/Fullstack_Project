@@ -5,7 +5,9 @@ import Messages from './Messages'
 import { TiMessages } from 'react-icons/ti'
 import { useSelector } from 'react-redux'
 
-const MessageContainer = () => {
+// eslint-disable-next-line react/prop-types
+const MessageContainer = ({ color }) => {
+  // Destructure the color prop
   const { selectedConversation, setSelectedConversation } = useConversation()
 
   useEffect(() => {
@@ -18,11 +20,16 @@ const MessageContainer = () => {
         <NoChatSelected />
       ) : (
         <>
-          <div className="message-header">
+          <div
+            className="message-header"
+            style={{
+              backgroundColor: color, // Use color directly
+            }}
+          >
             <span className="label-text">To: </span>
             <span className="text-color">{selectedConversation.firstName}</span>
           </div>
-          <Messages />
+          <Messages blueColor="#00a0bc" whiteColor="#00a0bc" />
           <MessageInput />
         </>
       )}

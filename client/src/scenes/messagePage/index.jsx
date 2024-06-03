@@ -3,9 +3,9 @@ import Sidebar from '../../components/sidebar/Sidebar'
 import MessageContainer from '../../components/messages/MessageContainer'
 import Navbar from 'scenes/navbar'
 import { useSelector } from 'react-redux'
+import { themeSettings } from 'theme'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { createTheme } from '@mui/material/styles'
-import { themeSettings } from 'theme'
 
 const Home = () => {
   const mode = useSelector((state) => state.mode)
@@ -16,10 +16,16 @@ const Home = () => {
       <CssBaseline />
       <Box>
         <Navbar />
-        <div className="chat-app">
-          <div className="container">
+        <div
+          className="chat-app"
+          style={{ backgroundColor: theme.palettee.background.default }}
+        >
+          <div
+            className="container"
+            style={{ backgroundColor: theme.palettee.background.alt }}
+          >
             <Sidebar />
-            <MessageContainer />
+            <MessageContainer color={theme.palettee.primary.light} />
           </div>
         </div>
       </Box>

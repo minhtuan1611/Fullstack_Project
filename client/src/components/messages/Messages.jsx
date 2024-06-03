@@ -4,7 +4,7 @@ import MessageSkeleton from '../skeletons/MessageSkeleton'
 import Message from './Message'
 
 // eslint-disable-next-line react/prop-types
-const Messages = () => {
+const Messages = (blueColor, whiteColor) => {
   const { messages, loading } = useGetMessages()
   const lastMessageRef = useRef()
 
@@ -23,7 +23,11 @@ const Messages = () => {
             key={message._id}
             ref={idx === messages.length - 1 ? lastMessageRef : null}
           >
-            <Message message={message} />
+            <Message
+              message={message}
+              blueColor={blueColor}
+              whiteColor={whiteColor}
+            />
           </div>
         ))}
 
