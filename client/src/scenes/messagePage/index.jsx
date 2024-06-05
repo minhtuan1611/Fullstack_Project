@@ -1,3 +1,4 @@
+import './index.css'
 import { Box } from '@mui/material'
 import Sidebar from '../../components/sidebar/Sidebar'
 import MessageContainer from '../../components/messages/MessageContainer'

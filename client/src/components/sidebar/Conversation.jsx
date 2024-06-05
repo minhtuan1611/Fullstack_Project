@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import UserImage from '../UserImage'
 import { getTimeDifference, truncateMessage } from '../../utils/message'
@@ -27,6 +28,20 @@ const Conversation = ({
   isLast,
   color,
 }) => {
+  const [timeDifference, setTimeDifference] = useState(
+    lastMessage ? getTimeDifference(lastMessage.createdAt) : ''
+  )
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (lastMessage) {
+        setTimeDifference(getTimeDifference(lastMessage.createdAt))
+      }
+    }, 1000)
+
+    return () => clearInterval(intervalId)
+  }, [lastMessage])
+
   return (
     <>
       <ConversationWrapper
@@ -41,7 +56,7 @@ const Conversation = ({
           </div>
           <p className="message-content">
             {lastMessage ? truncateMessage(lastMessage.message) : ''}
-            {lastMessage ? getTimeDifference(lastMessage.createdAt) : ''}
+            {lastMessage ? timeDifference : ''}
           </p>
         </div>
       </ConversationWrapper>

@@ -28,9 +28,7 @@ const MessageContainer = ({ color }) => {
             <span className="label-text">To: </span>
             <span className="text-color">{selectedConversation.firstName}</span>
           </div>
-          <Messages blueColor="#00a0bc" whiteColor="#ffffff" />{' '}
-          {/* Pass colors as props */}
-          <MessageInput />
+          <Messages blueColor="#00a0bc" whiteColor="#ffffff" /> <MessageInput />
         </>
       )}
     </div>
