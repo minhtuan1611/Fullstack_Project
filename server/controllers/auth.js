@@ -47,9 +47,9 @@ export const login = async (req, res) => {
     if (!isMatch) return res.status(400).json({ msg: 'Invalid credentials. ' })
 
     const token = jwt.sign(
-      { expiresIn: 3 * 24 * 60 * 60 }, // 3 days
       { id: user._id },
-      process.env.JWT_SECRET
+      process.env.JWT_SECRET,
+      { expiresIn: 3 * 24 * 60 * 60 } // 3 days
     )
     delete user.password
     res.status(200).json({ token, user })
